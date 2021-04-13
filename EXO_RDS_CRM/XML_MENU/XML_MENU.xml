@@ -1,0 +1,17 @@
+﻿<Application>
+  <Menus>
+    <action type="add">
+      <Menu Checked="0" Enabled="1" FatherUID="2560" Image="" String="Documentos" Type="2" UniqueID="EXO-MnODOC"></Menu>      
+      <Menu Checked="0" Enabled="1" FatherUID="EXO-MnODOC" Image="" String="Enlace a anexos oportunidad" Type="1" UniqueID="EXO-MnEAO"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="EXO-MnODOC" Image="" String="Documentos Obligatorios" Type="1" UniqueID="EXO-MnCDE"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="2560" Image="" String="Control Económico" Type="2" UniqueID="EXO-MnOEC"></Menu>       
+      <Menu Checked="0" Enabled="1" FatherUID="EXO-MnOEC" Image="" String="Control de Proyectos" Type="1" UniqueID="EXO-MnOCP"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="EXO-MnOEC" Image="" String="Hoja de Costes" Type="1" UniqueID="EXO-MnOHC"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="EXO-MnOEC" Image="" String="Análisis Económico" Type="1" UniqueID="EXO-MnOAE"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="EXO-MnOEC" Image="" String="Definiciones" Type="2" UniqueID="EXO-MnDEF"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="EXO-MnDEF" Image="" String="Costes Departamento" Type="1" UniqueID="EXO-MnCDP"></Menu>
+      <Menu Checked="0" Enabled="1" FatherUID="EXO-MnDEF" Image="" String="Conceptos" Type="1" UniqueID="EXO-MnCNC"></Menu>
+    </action>
+  </Menus>
+</Application>
+
