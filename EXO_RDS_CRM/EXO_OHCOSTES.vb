@@ -336,43 +336,43 @@ Public Class EXO_OHCOSTES
                     ElseIf oXmlNodeField.InnerXml = "C_0_1" Then 'Capitulo
                         oXmlNodeField = oXmlNodeColumn.SelectSingleNode("Value")
                         sValor = oXmlNodeField.InnerText
-                        If sValor = "" Then
-                            objGlobal.SBOApp.StatusBar.SetText("(EXO) - El capítulo en la pestaña ""Suministros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
-                            objGlobal.SBOApp.MessageBox("El capítulo en la pestaña ""Suministros"", no puede estar vacío.")
-                            bCamposObligatorios = False
-                        End If
+                        'If sValor = "" Then
+                        '    objGlobal.SBOApp.StatusBar.SetText("(EXO) - El capítulo en la pestaña ""Suministros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
+                        '    objGlobal.SBOApp.MessageBox("El capítulo en la pestaña ""Suministros"", no puede estar vacío.")
+                        '    bCamposObligatorios = False
+                        'End If
                     ElseIf oXmlNodeField.InnerXml = "C_0_2" Then 'partida
                         oXmlNodeField = oXmlNodeColumn.SelectSingleNode("Value")
                         sValor = oXmlNodeField.InnerText
-                        If sValor = "" Then
-                            objGlobal.SBOApp.StatusBar.SetText("(EXO) - La partida en la pestaña ""Suministros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
-                            objGlobal.SBOApp.MessageBox("La partida en la pestaña ""Suministros"", no puede estar vacío.")
-                            bCamposObligatorios = False
-                        End If
+                        'If sValor = "" Then
+                        '    objGlobal.SBOApp.StatusBar.SetText("(EXO) - La partida en la pestaña ""Suministros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
+                        '    objGlobal.SBOApp.MessageBox("La partida en la pestaña ""Suministros"", no puede estar vacío.")
+                        '    bCamposObligatorios = False
+                        'End If
                     ElseIf oXmlNodeField.InnerXml = "C_0_3" Then 'Descripción
                         oXmlNodeField = oXmlNodeColumn.SelectSingleNode("Value")
                         sValor = oXmlNodeField.InnerText
-                        If sValor = "" Then
-                            objGlobal.SBOApp.StatusBar.SetText("(EXO) - La descripción en la pestaña ""Suministros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
-                            objGlobal.SBOApp.MessageBox("La Descripción en la pestaña ""Suministros"", no puede estar vacío.")
-                            bCamposObligatorios = False
-                        End If
+                        'If sValor = "" Then
+                        '    objGlobal.SBOApp.StatusBar.SetText("(EXO) - La descripción en la pestaña ""Suministros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
+                        '    objGlobal.SBOApp.MessageBox("La Descripción en la pestaña ""Suministros"", no puede estar vacío.")
+                        '    bCamposObligatorios = False
+                        'End If
                     ElseIf oXmlNodeField.InnerXml = "C_0_7" Then 'Fabricante
                         oXmlNodeField = oXmlNodeColumn.SelectSingleNode("Value")
                         sValor = oXmlNodeField.InnerText
-                        If sValor = "" Then
-                            objGlobal.SBOApp.StatusBar.SetText("(EXO) - El fabricante en la pestaña ""Suministros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
-                            objGlobal.SBOApp.MessageBox("El fabricante en la pestaña ""Suministros"", no puede estar vacío.")
-                            bCamposObligatorios = False
-                        End If
+                        'If sValor = "" Then
+                        '    objGlobal.SBOApp.StatusBar.SetText("(EXO) - El fabricante en la pestaña ""Suministros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
+                        '    objGlobal.SBOApp.MessageBox("El fabricante en la pestaña ""Suministros"", no puede estar vacío.")
+                        '    bCamposObligatorios = False
+                        'End If
                     ElseIf oXmlNodeField.InnerXml = "C_0_9" Then 'Carencia de pago
                         oXmlNodeField = oXmlNodeColumn.SelectSingleNode("Value")
                         sValor = oXmlNodeField.InnerText
-                        If sValor = "" Then
-                            objGlobal.SBOApp.StatusBar.SetText("(EXO) - La carencia de pago en la pestaña ""Suministros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
-                            objGlobal.SBOApp.MessageBox("La carencia de pago en la pestaña ""Suministros"", no puede estar vacío.")
-                            bCamposObligatorios = False
-                        End If
+                        'If sValor = "" Then
+                        '    objGlobal.SBOApp.StatusBar.SetText("(EXO) - La carencia de pago en la pestaña ""Suministros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
+                        '    objGlobal.SBOApp.MessageBox("La carencia de pago en la pestaña ""Suministros"", no puede estar vacío.")
+                        '    bCamposObligatorios = False
+                        'End If
                     End If
                 Next
                 dCosteTotal += dCoste
@@ -433,19 +433,19 @@ Public Class EXO_OHCOSTES
                     ElseIf oXmlNodeField.InnerXml = "C_1_1" Then 'Departamento
                         oXmlNodeField = oXmlNodeColumn.SelectSingleNode("Value")
                         sValor = oXmlNodeField.InnerText
-                        If sValor = "" Then
-                            objGlobal.SBOApp.StatusBar.SetText("(EXO) - El Departamento en la pestaña ""Servicios"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
-                            objGlobal.SBOApp.MessageBox("El concepto en la pestaña ""Servicios"", no puede estar vacío.")
-                            bCamposObligatorios = False
-                        End If
+                        'If sValor = "" Then
+                        '    objGlobal.SBOApp.StatusBar.SetText("(EXO) - El Departamento en la pestaña ""Servicios"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
+                        '    objGlobal.SBOApp.MessageBox("El concepto en la pestaña ""Servicios"", no puede estar vacío.")
+                        '    bCamposObligatorios = False
+                        'End If
                     ElseIf oXmlNodeField.InnerXml = "C_1_3" Then 'Descripción
                         oXmlNodeField = oXmlNodeColumn.SelectSingleNode("Value")
                         sValor = oXmlNodeField.InnerText
-                        If sValor = "" Then
-                            objGlobal.SBOApp.StatusBar.SetText("(EXO) - La Descripción en la pestaña ""Servicios"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
-                            objGlobal.SBOApp.MessageBox("La Descripción en la pestaña ""Servicios"", no puede estar vacío.")
-                            bCamposObligatorios = False
-                        End If
+                        'If sValor = "" Then
+                        '    objGlobal.SBOApp.StatusBar.SetText("(EXO) - La Descripción en la pestaña ""Servicios"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
+                        '    objGlobal.SBOApp.MessageBox("La Descripción en la pestaña ""Servicios"", no puede estar vacío.")
+                        '    bCamposObligatorios = False
+                        'End If
                     End If
                 Next
                 dCosteTotal += dCoste
@@ -504,11 +504,11 @@ Public Class EXO_OHCOSTES
                     ElseIf oXmlNodeField.InnerXml = "C_2_1" Then 'Concepto
                         oXmlNodeField = oXmlNodeColumn.SelectSingleNode("Value")
                         sValor = oXmlNodeField.InnerText
-                        If sValor = "" Then
-                            objGlobal.SBOApp.StatusBar.SetText("(EXO) - El concepto en la pestaña ""Otros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
-                            objGlobal.SBOApp.MessageBox("El concepto en la pestaña ""Otros"", no puede estar vacío.")
-                            bCamposObligatorios = False
-                        End If
+                        'If sValor = "" Then
+                        '    objGlobal.SBOApp.StatusBar.SetText("(EXO) - El concepto en la pestaña ""Otros"", no puede estar vacío.", SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
+                        '    objGlobal.SBOApp.MessageBox("El concepto en la pestaña ""Otros"", no puede estar vacío.")
+                        '    bCamposObligatorios = False
+                        'End If
                     End If
                 Next
                 dCosteTotal += dCoste
@@ -701,18 +701,22 @@ Public Class EXO_OHCOSTES
 #End Region
 #Region "Pestaña SUM./SERV. Externos"
                 'Fabricante
-                sSQL = " (SELECT '- No identificado –' ""Fabricantes"" FROM DUMMY ) "
+                sSQL = " SELECT * FROM ("
+                sSQL &= " (SELECT '- No identificado –' ""Fabricantes"" FROM DUMMY ) "
                 sSQL &= " UNION ALL "
                 sSQL &= "(SELECT ""FirmName"" ""Fabricantes"" FROM ""OMRC"" ORDER BY ""FirmName"") "
                 sSQL &= " UNION ALL "
                 sSQL &= " (SELECT ""CardName""  ""Fabricantes"" FROM ""OCRD"" WHERE ""CardType""='S' ORDER BY ""CardName"") "
+                sSQL &= ")T ORDER BY ""Fabricantes"" "
                 objGlobal.funcionesUI.cargaCombo(CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_7").ValidValues, sSQL)
                 CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_7").ExpandType = BoExpandType.et_DescriptionOnly
 
                 'Mayorista
-                sSQL = " (SELECT ' ' ""Mayorista"" FROM DUMMY ) "
+                sSQL = " SELECT * FROM ("
+                sSQL &= " (SELECT ' ' ""Mayorista"" FROM DUMMY ) "
                 sSQL &= " UNION ALL "
                 sSQL &= " (SELECT ""CardName""  ""Mayorista"" FROM ""OCRD"" WHERE ""CardType""='S' ORDER BY ""CardName"") "
+                sSQL &= ")T ORDER BY ""Mayorista"" "
                 objGlobal.funcionesUI.cargaCombo(CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_8").ValidValues, sSQL)
                 CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_8").ExpandType = BoExpandType.et_DescriptionOnly
 

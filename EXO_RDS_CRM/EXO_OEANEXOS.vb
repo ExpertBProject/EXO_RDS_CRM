@@ -345,6 +345,9 @@ Public Class EXO_OEANEXOS
                     CargarCombos(oForm)
                     'Se quita la columna de etapas
                     CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_1").Visible = False
+                    CType(oForm.Items.Item("1_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_1_1").Visible = False
+                    CType(oForm.Items.Item("2_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_2_1").Visible = False
+                    CType(oForm.Items.Item("3_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_3_1").Visible = False
 
                 Catch ex As Exception
                     'objGlobal.SBOApp.StatusBar.SetText("No se puede inicializar el campo ""Etapa de Anexos"". " & ex.Message, SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
