@@ -554,13 +554,13 @@ Public Class EXO_OHCOSTES
                 End Select
 
             ElseIf pVal.ItemUID = "0_U_G" And (pVal.ColUID = "C_0_8") Then
-                If CType(CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_8").Cells.Item(pVal.Row).Specific, SAPbouiCOM.ComboBox).Selected IsNot Nothing Then
-                    sMayorista = CType(CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_8").Cells.Item(pVal.Row).Specific, SAPbouiCOM.ComboBox).Selected.Value.ToString
+                If CType(CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_8").Cells.Item(pVal.Row).Specific, SAPbouiCOM.EditText).Value.ToString <> "" Then
+                    sMayorista = CType(CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_8").Cells.Item(pVal.Row).Specific, SAPbouiCOM.EditText).Value.ToString
                     'Carencia de pago
                     sSQL &= "SELECT G.""PymntGroup"" ""CodPago"" FROM ""OCTG"" G INNER JOIN ""OCRD"" C ON G.""GroupNum""=C.""GroupNum"" and C.""CardName""='" & sMayorista & "' "
                     oRs = CType(objGlobal.compañia.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset), SAPbobsCOM.Recordset)
                     oRs.DoQuery(sSQL)
-                    If oRs.RecordCount > 0 Then
+                    If oRs.RecordCount > 0 And oRs.Fields.Item("CodPago").Value.ToString <> "" Then
                         CType(CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_9").Cells.Item(pVal.Row).Specific, SAPbouiCOM.ComboBox).Select(oRs.Fields.Item("CodPago").Value.ToString, SAPbouiCOM.BoSearchKey.psk_ByValue)
                     End If
                 End If
@@ -705,20 +705,20 @@ Public Class EXO_OHCOSTES
                 sSQL &= " (SELECT '- No identificado –' ""Fabricantes"" FROM DUMMY ) "
                 sSQL &= " UNION ALL "
                 sSQL &= "(SELECT ""FirmName"" ""Fabricantes"" FROM ""OMRC"" ORDER BY ""FirmName"") "
-                sSQL &= " UNION ALL "
-                sSQL &= " (SELECT ""CardName""  ""Fabricantes"" FROM ""OCRD"" WHERE ""CardType""='S' ORDER BY ""CardName"") "
+                'sSQL &= " UNION ALL "
+                'sSQL &= " (SELECT ""CardName""  ""Fabricantes"" FROM ""OCRD"" WHERE ""CardType""='S' ORDER BY ""CardName"") "
                 sSQL &= ")T ORDER BY ""Fabricantes"" "
                 objGlobal.funcionesUI.cargaCombo(CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_7").ValidValues, sSQL)
                 CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_7").ExpandType = BoExpandType.et_DescriptionOnly
 
-                'Mayorista
-                sSQL = " SELECT * FROM ("
-                sSQL &= " (SELECT ' ' ""Mayorista"" FROM DUMMY ) "
-                sSQL &= " UNION ALL "
-                sSQL &= " (SELECT ""CardName""  ""Mayorista"" FROM ""OCRD"" WHERE ""CardType""='S' ORDER BY ""CardName"") "
-                sSQL &= ")T ORDER BY ""Mayorista"" "
-                objGlobal.funcionesUI.cargaCombo(CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_8").ValidValues, sSQL)
-                CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_8").ExpandType = BoExpandType.et_DescriptionOnly
+                ''Mayorista
+                'sSQL = " SELECT * FROM ("
+                'sSQL &= " (SELECT ' ' ""Mayorista"" FROM DUMMY ) "
+                'sSQL &= " UNION ALL "
+                'sSQL &= " (SELECT ""CardName""  ""Mayorista"" FROM ""OCRD"" WHERE ""CardType""='S' ORDER BY ""CardName"") "
+                'sSQL &= ")T ORDER BY ""Mayorista"" "
+                'objGlobal.funcionesUI.cargaCombo(CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_8").ValidValues, sSQL)
+                'CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_8").ExpandType = BoExpandType.et_DescriptionOnly
 
                 'Carencia de pago
                 sSQL = " (SELECT ""PymntGroup"" FROM ""OCTG""  ORDER BY ""PymntGroup"") "

@@ -551,7 +551,8 @@ Public Class EXO_CNTRLPR
                 'Inicializamos valores
                 Try
                     CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_1").DisplayDesc = True
-                    CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_1").ExpandType = BoExpandType.et_DescriptionOnly
+                    'CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_1").ExpandType = BoExpandType.et_DescriptionOnly
+                    CType(oForm.Items.Item("0_U_G").Specific, SAPbouiCOM.Matrix).Columns.Item("C_0_3").Editable = True
                     'CargarCombos(oForm)
                 Catch ex As Exception
                     'objGlobal.SBOApp.StatusBar.SetText("No se puede inicializar el campo ""Etapa de Anexos"". " & ex.Message, SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)

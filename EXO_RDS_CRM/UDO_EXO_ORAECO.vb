@@ -270,7 +270,7 @@ Public Class UDO_EXO_ORAECO
                     Dim sCodigos() As String = sCode.Split("_")
                     sSQL = "UPDATE ""@EXO_CNTRLPRL"" "
                     sSQL &= " SET ""U_EXO_HOJACOST""='" & sCode & "' "
-                    sSQL &= " , ""U_EXO_IMPORTE""=" & dPVPTotal.ToString
+                    'sSQL &= " , ""U_EXO_IMPORTE""=" & dPVPTotal.ToString
                     sSQL &= " WHERE ""Code""='" & sCodigos(0) & "'  And ""U_EXO_LOTE""=" & sCodigos(1)
                     oRs = CType(objGlobal.compañia.GetBusinessObject(SAPbobsCOM.BoObjectTypes.BoRecordset), SAPbobsCOM.Recordset)
                     oRs.DoQuery(sSQL)
