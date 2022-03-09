@@ -99,7 +99,9 @@ Public Class EXO_OOPR
                         Case "320"
                             Select Case infoEvento.EventType
                                 Case SAPbouiCOM.BoEventTypes.et_FORM_VISIBLE
-
+                                    If EventHandler_Form_Visible_After(infoEvento) = False Then
+                                        Return False
+                                    End If
                                 Case SAPbouiCOM.BoEventTypes.et_FORM_LOAD
                                     If EventHandler_Form_Load(infoEvento) = False Then
                                         Return False
@@ -142,6 +144,32 @@ Public Class EXO_OOPR
             Return False
         End Try
     End Function
+    Private Function EventHandler_Form_Visible_After(ByRef pVal As ItemEvent) As Boolean
+        Dim oForm As SAPbouiCOM.Form = Nothing
+        Dim sSQL As String = "" : Dim oRs As SAPbobsCOM.Recordset = Nothing
+        EventHandler_Form_Visible_After = False
+
+        Try
+            oForm = objGlobal.SBOApp.Forms.Item(pVal.FormUID)
+            If oForm.Visible = True Then
+                If CType(oForm.Items.Item("chkMarco").Specific, SAPbouiCOM.CheckBox).Checked = False Then
+                    oForm.Items.Item("cbOVIN").SetAutoManagedAttribute(SAPbouiCOM.BoAutoManagedAttr.ama_Editable, SAPbouiCOM.BoAutoFormMode.afm_All, SAPbouiCOM.BoModeVisualBehavior.mvb_True)
+                Else
+                    oForm.Items.Item("cbOVIN").SetAutoManagedAttribute(SAPbouiCOM.BoAutoManagedAttr.ama_Editable, SAPbouiCOM.BoAutoFormMode.afm_All, SAPbouiCOM.BoModeVisualBehavior.mvb_False)
+                End If
+            End If
+
+
+            EventHandler_Form_Visible_After = True
+
+        Catch exCOM As System.Runtime.InteropServices.COMException
+            Throw exCOM
+        Catch ex As Exception
+            Throw ex
+        Finally
+            EXO_CleanCOM.CLiberaCOM.Form(oForm)
+        End Try
+    End Function
     Private Function EventHandler_ItemPressed_After(ByRef pVal As ItemEvent) As Boolean
         Dim oForm As SAPbouiCOM.Form = Nothing
         Dim sSQL As String = "" : Dim oRs As SAPbobsCOM.Recordset = Nothing
@@ -152,7 +180,7 @@ Public Class EXO_OOPR
 
             Select Case pVal.ItemUID
                 Case "chkMarco"
-                    If CType(oForm.Items.Item("chkMarco").Specific, SAPbouiCOM.CheckBox).Checked = True Then
+                    If CType(oForm.Items.Item("chkMarco").Specific, SAPbouiCOM.CheckBox).Checked = False Then
                         oForm.Items.Item("cbOVIN").SetAutoManagedAttribute(SAPbouiCOM.BoAutoManagedAttr.ama_Editable, SAPbouiCOM.BoAutoFormMode.afm_All, SAPbouiCOM.BoModeVisualBehavior.mvb_True)
                     Else
                         oForm.Items.Item("cbOVIN").SetAutoManagedAttribute(SAPbouiCOM.BoAutoManagedAttr.ama_Editable, SAPbouiCOM.BoAutoFormMode.afm_All, SAPbouiCOM.BoModeVisualBehavior.mvb_False)
@@ -280,7 +308,8 @@ Public Class EXO_OOPR
             oNewItem.Left = oForm.Items.Item("137").Left
             oNewItem.Height = oForm.Items.Item("137").Height
             oNewItem.Width = oForm.Items.Item("137").Width
-            oNewItem.Enabled = False
+            oNewItem.Enabled = True
+
             oNewItem.DisplayDesc = True
             oNewItem.FromPane = 0 : oNewItem.ToPane = 0
             CType(oNewItem.Specific, SAPbouiCOM.ComboBox).DataBind.SetBound(True, "OOPR", "U_EXO_OPVIN")
@@ -297,8 +326,6 @@ Public Class EXO_OOPR
             oNewItem.Left = oForm.Items.Item("cbOVIN").Left - 20
             oNewItem.LinkTo = "cbOVIN"
             CType(oNewItem.Specific, SAPbouiCOM.LinkedButton).LinkedObjectType = SAPbouiCOM.BoLinkedObject.lf_SalesOpportunity
-
-
 #End Region
 
             oNewItem = oForm.Items.Add("lblF", BoFormItemTypes.it_STATIC)
@@ -429,6 +456,7 @@ Public Class EXO_OOPR
             Try
                 CargarCombos(oForm)
                 'CType(oForm.Items.Item("44").Specific, SAPbouiCOM.ComboBox).Select("2", BoSearchKey.psk_ByValue)
+
             Catch ex As Exception
                 objGlobal.SBOApp.StatusBar.SetText("No se puede inicializar el campo ""Oportunidades"". " & ex.Message, SAPbouiCOM.BoMessageTime.bmt_Short, SAPbouiCOM.BoStatusBarMessageType.smt_Error)
             End Try
@@ -447,7 +475,7 @@ Public Class EXO_OOPR
         Dim sSQL As String = ""
 
         Try
-            sSQL = "SELECT ""OpprId"",""Name"" FROM ""OOPR"" WHERE ""U_EXO_CLASIFICACION""<>'NR' "
+            sSQL = "SELECT ""OpprId"",""Name"" FROM ""OOPR"" WHERE ""U_EXO_CLASIFICACION""<>'NR' and ""U_EXO_AMARCO""='Y'"
 
             objGlobal.funcionesUI.cargaCombo(CType(oForm.Items.Item("cbOVIN").Specific, SAPbouiCOM.ComboBox).ValidValues, sSQL)
 
@@ -469,9 +497,14 @@ Public Class EXO_OOPR
                 Select Case infoEvento.FormTypeEx
                     Case "320"
                         Select Case infoEvento.EventType
-
                             Case SAPbouiCOM.BoEventTypes.et_FORM_DATA_LOAD
-
+                                If oForm.Visible = True Then
+                                    If CType(oForm.Items.Item("chkMarco").Specific, SAPbouiCOM.CheckBox).Checked = False Then
+                                        oForm.Items.Item("cbOVIN").SetAutoManagedAttribute(SAPbouiCOM.BoAutoManagedAttr.ama_Editable, SAPbouiCOM.BoAutoFormMode.afm_All, SAPbouiCOM.BoModeVisualBehavior.mvb_True)
+                                    Else
+                                        oForm.Items.Item("cbOVIN").SetAutoManagedAttribute(SAPbouiCOM.BoAutoManagedAttr.ama_Editable, SAPbouiCOM.BoAutoFormMode.afm_All, SAPbouiCOM.BoModeVisualBehavior.mvb_False)
+                                    End If
+                                End If
                             Case SAPbouiCOM.BoEventTypes.et_FORM_DATA_UPDATE
 
                             Case SAPbouiCOM.BoEventTypes.et_FORM_DATA_ADD
@@ -487,7 +520,7 @@ Public Class EXO_OOPR
 
                             Case SAPbouiCOM.BoEventTypes.et_FORM_DATA_LOAD
                                 If oForm.Visible = True Then
-                                    If CType(oForm.Items.Item("chkMarco").Specific, SAPbouiCOM.CheckBox).Checked = True Then
+                                    If CType(oForm.Items.Item("chkMarco").Specific, SAPbouiCOM.CheckBox).Checked = False Then
                                         oForm.Items.Item("cbOVIN").SetAutoManagedAttribute(SAPbouiCOM.BoAutoManagedAttr.ama_Editable, SAPbouiCOM.BoAutoFormMode.afm_All, SAPbouiCOM.BoModeVisualBehavior.mvb_True)
                                     Else
                                         oForm.Items.Item("cbOVIN").SetAutoManagedAttribute(SAPbouiCOM.BoAutoManagedAttr.ama_Editable, SAPbouiCOM.BoAutoFormMode.afm_All, SAPbouiCOM.BoModeVisualBehavior.mvb_False)
